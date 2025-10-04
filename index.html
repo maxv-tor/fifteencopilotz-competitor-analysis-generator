@@ -132,7 +132,7 @@
 
         <!-- Main Form Container -->
         <div class="glass-effect rounded-3xl shadow-2xl p-6 md:p-10 mb-6">
-            <form id="analysisForm" method="GET" action="https://contentlabs.app.n8n.cloud/webhook/competitor-products-brief">
+            <form id="analysisForm">
                 
                 <!-- Company & Product Info Section -->
                 <div class="mb-8">
@@ -276,7 +276,7 @@
                                             value="Comprehensive (6-10 competitors)"
                                             class="radio-custom"
                                             checked
-                                            >
+                                        >
                                         <span class="ml-2 text-gray-700">Comprehensive (6-10)</span>
                                     </label>
                                 </div>
@@ -446,30 +446,22 @@
                 }
             }
 
-            const url = form.action + '?' + params.toString();
+            const webhookUrl = 'https://contentlabs.app.n8n.cloud/webhook/competitor-products-brief';
+            const fullUrl = webhookUrl + '?' + params.toString();
 
-            // Submit the form
-            fetch(url, {
-                method: 'GET',
-                mode: 'no-cors'
-            })
-            .then(() => {
-                // Show success message after 1.5 seconds
+            // Create an image element to send GET request (works cross-origin)
+            const img = new Image();
+            img.onload = img.onerror = function() {
+                // Show success message after brief delay
                 setTimeout(() => {
                     loadingState.classList.add('hidden');
                     successMessage.classList.remove('hidden');
                     lucide.createIcons();
                 }, 1500);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Still show success since it's a GET request that should work
-                setTimeout(() => {
-                    loadingState.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
-                    lucide.createIcons();
-                }, 1500);
-            });
+            };
+            
+            // This triggers the GET request
+            img.src = fullUrl;
         });
 
         // Add smooth scroll effect
