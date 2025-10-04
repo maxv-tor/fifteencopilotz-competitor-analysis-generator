@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competitor Analysis Generator - Z2L ToolKit</title>
+    <title>Competitor Analysis Generator - Content Labs 416</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -200,6 +200,19 @@
                                 class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
                             >
                         </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Your Email Address to Email the Report To <span class="text-red-500">*</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                name="email_address" 
+                                required
+                                placeholder="e.g., john@example.com"
+                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            >
+                        </div>
                     </div>
                 </div>
 
@@ -358,7 +371,7 @@
         <!-- Footer -->
         <footer class="text-center text-white">
             <p class="text-sm opacity-90">
-                © 2025 Z2L ToolKit. All rights reserved.
+                © 2025 Content Labs 416. All rights reserved.
             </p>
         </footer>
     </div>
@@ -389,6 +402,17 @@
                     field.classList.remove('border-red-500');
                 }
             });
+
+            // Additional email validation
+            const emailField = form.querySelector('[type="email"]');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField && !emailPattern.test(emailField.value)) {
+                isValid = false;
+                emailField.classList.add('border-red-500');
+                alert('Please enter a valid email address');
+                emailField.focus();
+                return;
+            }
 
             if (!isValid) {
                 alert('Please fill in all required fields (marked with *)');
