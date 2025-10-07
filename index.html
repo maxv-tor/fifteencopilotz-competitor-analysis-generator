@@ -389,98 +389,131 @@
         </footer>
     </div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
 
-        // Form handling
-        const form = document.getElementById('analysisForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const loadingState = document.getElementById('loadingState');
-        const successMessage = document.getElementById('successMessage');
+    // Form handling
+    const form = document.getElementById('analysisForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const loadingState = document.getElementById('loadingState');
+    const successMessage = document.getElementById('successMessage');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate required fields
-            const requiredFields = form.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.classList.add('border-red-500');
-                    field.focus();
-                } else {
-                    field.classList.remove('border-red-500');
-                }
-            });
-
-            // Additional email validation
-            const emailField = form.querySelector('[type="email"]');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailField && !emailPattern.test(emailField.value)) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate required fields
+        const requiredFields = form.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
                 isValid = false;
-                emailField.classList.add('border-red-500');
-                alert('Please enter a valid email address');
-                emailField.focus();
-                return;
+                field.classList.add('border-red-500');
+                field.focus();
+            } else {
+                field.classList.remove('border-red-500');
             }
+        });
 
-            if (!isValid) {
-                alert('Please fill in all required fields (marked with *)');
-                return;
+        // Additional email validation
+        const emailField = form.querySelector('[type="email"]');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailField && !emailPattern.test(emailField.value)) {
+            isValid = false;
+            emailField.classList.add('border-red-500');
+            alert('Please enter a valid email address');
+            emailField.focus();
+            return;
+        }
+
+        if (!isValid) {
+            alert('Please fill in all required fields (marked with *)');
+            return;
+        }
+
+        // Show loading state
+        form.classList.add('hidden');
+        loadingState.classList.remove('hidden');
+
+        // Build URL with parameters
+        const formData = new FormData(form);
+        const params = new URLSearchParams();
+        
+        for (let [key, value] of formData.entries()) {
+            if (value.trim()) {
+                params.append(key, value.trim());
             }
+        }
 
-            // Show loading state
-            form.classList.add('hidden');
-            loadingState.classList.remove('hidden');
+        const webhookUrl = 'https://contentlabs.app.n8n.cloud/webhook/competitor-products-brief';
+        const fullUrl = webhookUrl + '?' + params.toString();
 
-            // Build URL with parameters
-            const formData = new FormData(form);
-            const params = new URLSearchParams();
-            
-            for (let [key, value] of formData.entries()) {
-                if (value.trim()) {
-                    params.append(key, value.trim());
+        try {
+            // Отправляем запрос и получаем HTML
+            const response = await fetch(fullUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'text/html'
                 }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const webhookUrl = 'https://contentlabs.app.n8n.cloud/webhook/competitor-products-brief';
-            const fullUrl = webhookUrl + '?' + params.toString();
+            // Получаем HTML контент
+            const htmlContent = await response.text();
 
-            // Create an image element to send GET request (works cross-origin)
-            const img = new Image();
-            img.onload = img.onerror = function() {
-                // Show success message after brief delay
+            // Открываем результат в новой вкладке
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(htmlContent);
+            newWindow.document.close();
+
+            // Показываем success message
+            setTimeout(() => {
+                loadingState.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                lucide.createIcons();
+
+                // Сброс формы через 3 секунды
                 setTimeout(() => {
-                    loadingState.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    form.classList.remove('hidden');
+                    form.reset();
                     lucide.createIcons();
-                }, 1500);
-            };
+                }, 3000);
+            }, 500);
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to generate analysis. Please try again.\n\nError: ' + error.message);
             
-            // This triggers the GET request
-            img.src = fullUrl;
-        });
+            // Вернуться к форме
+            loadingState.classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+    });
 
-        // Add smooth scroll effect
-        document.querySelectorAll('input, textarea').forEach(field => {
-            field.addEventListener('focus', function() {
-                this.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
+    // Add smooth scroll effect
+    document.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('focus', function() {
+            this.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
+    });
 
-        // Character counter for textareas (optional enhancement)
-        document.querySelectorAll('textarea').forEach(textarea => {
-            textarea.addEventListener('input', function() {
-                const maxLength = this.getAttribute('maxlength');
-                if (maxLength) {
-                    const remaining = maxLength - this.value.length;
-                    console.log(`Characters remaining: ${remaining}`);
-                }
-            });
+    // Character counter for textareas (optional enhancement)
+    document.querySelectorAll('textarea').forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            const maxLength = this.getAttribute('maxlength');
+            if (maxLength) {
+                const remaining = maxLength - this.value.length;
+                console.log(`Characters remaining: ${remaining}`);
+            }
         });
-    </script>
+    });
+</script>
+
+
 </body>
 </html>
