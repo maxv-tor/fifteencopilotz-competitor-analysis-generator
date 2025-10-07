@@ -1,394 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competitor Analysis Generator - by Content Labs 416</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .input-field {
-            transition: all 0.3s ease;
-        }
-
-        .input-field:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .loading-spinner {
-            border: 3px solid #f3f4f6;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .suggestion-item {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .suggestion-item:hover {
-            background: #f3f4f6;
-            transform: translateX(4px);
-        }
-
-        .radio-custom {
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #667eea;
-            border-radius: 50%;
-            outline: none;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .radio-custom:checked {
-            background: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .radio-custom:checked::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .warning-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-left: 4px solid #f59e0b;
-        }
-    </style>
-</head>
-<body class="p-4 md:p-8">
-    <div class="max-w-4xl mx-auto fade-in">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg mb-4">
-                <i data-lucide="target" class="w-8 h-8 text-purple-600"></i>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-3">
-                Competitor Analysis Generator
-            </h1>
-            <p class="text-lg text-purple-100 max-w-2xl mx-auto">
-                Get comprehensive insights into your competitive landscape. Discover strengths, weaknesses, and opportunities to differentiate your product.
-            </p>
-        </div>
-
-        <!-- Main Form Container -->
-        <div class="glass-effect rounded-3xl shadow-2xl p-6 md:p-10 mb-6">
-            <form id="analysisForm">
-                
-                <!-- Company & Product Info Section -->
-                <div class="mb-8">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i data-lucide="building-2" class="w-6 h-6 mr-2 text-purple-600"></i>
-                        Company & Product Information
-                    </h2>
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Company Name <span class="text-red-500">*</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                name="company_name" 
-                                required
-                                placeholder="e.g., Acme Corporation"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            >
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Product Name <span class="text-red-500">*</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                name="product_name" 
-                                required
-                                placeholder="e.g., TaskMaster Pro"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            >
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Product Category <span class="text-red-500">*</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                name="product_category" 
-                                id="categoryInput"
-                                required
-                                placeholder="e.g., SaaS, E-commerce, Mobile App..."
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                list="categoryList"
-                            >
-                            <datalist id="categoryList">
-                                <option value="SaaS">
-                                <option value="E-commerce">
-                                <option value="Mobile App">
-                                <option value="Hardware">
-                                <option value="Enterprise Software">
-                                <option value="Consumer Electronics">
-                                <option value="FinTech">
-                                <option value="HealthTech">
-                                <option value="EdTech">
-                            </datalist>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Product Subcategory
-                            </label>
-                            <input 
-                                type="text" 
-                                name="product_subcategory" 
-                                placeholder="e.g., Project Management, CRM..."
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            >
-                        </div>
-
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Your Email Address to Email the Report To <span class="text-red-500">*</span>
-                            </label>
-                            <input 
-                                type="email" 
-                                name="email_address" 
-                                required
-                                placeholder="e.g., john@example.com"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Details Section -->
-                <div class="mb-8">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i data-lucide="package" class="w-6 h-6 mr-2 text-purple-600"></i>
-                        Product Details
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Key Product Features <span class="text-red-500">*</span>
-                            </label>
-                            <textarea 
-                                name="key_features" 
-                                required
-                                rows="4"
-                                placeholder="Describe 3-5 key features of your product...&#10;&#10;e.g.,&#10;• Real-time collaboration with team members&#10;• Advanced analytics dashboard&#10;• AI-powered automation&#10;• Mobile app with offline support&#10;• Integration with 100+ tools"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            ></textarea>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">
-                                    Your Price Point
-                                </label>
-                                <input 
-                                    type="text" 
-                                    name="price_point" 
-                                    placeholder="$99/month or Free"
-                                    class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                >
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">
-                                    Research Depth
-                                </label>
-                                <div class="flex items-center space-x-6 h-12">
-                                    <label class="flex items-center cursor-pointer">
-                                        <input 
-                                            type="radio" 
-                                            name="research_depth" 
-                                            value="Basic (3-5 competitors)"
-                                            class="radio-custom"
-                                        >
-                                        <span class="ml-2 text-gray-700">Basic (3-5)</span>
-                                    </label>
-                                    <label class="flex items-center cursor-pointer">
-                                        <input 
-                                            type="radio" 
-                                            name="research_depth" 
-                                            value="Comprehensive (6-10 competitors)"
-                                            class="radio-custom"
-                                            checked
-                                        >
-                                        <span class="ml-2 text-gray-700">Comprehensive (6-10)</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Target Market/Audience
-                            </label>
-                            <textarea 
-                                name="target_market" 
-                                rows="3"
-                                placeholder="Describe your ideal customer...&#10;&#10;e.g., Small to medium-sized businesses (10-100 employees) in the tech industry, looking for efficient project management solutions."
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            ></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Competitor Info Section -->
-                <div class="mb-8">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i data-lucide="users" class="w-6 h-6 mr-2 text-purple-600"></i>
-                        Competitor Information
-                    </h2>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Known Competitors
-                            </label>
-                            <textarea 
-                                name="known_competitors" 
-                                rows="3"
-                                placeholder="List competitors (comma-separated)...&#10;&#10;e.g., Asana, Monday.com, Trello, ClickUp"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            ></textarea>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Competitor URLs
-                            </label>
-                            <textarea 
-                                name="competitor_urls" 
-                                rows="3"
-                                placeholder="List competitor websites (comma or line-separated)...&#10;&#10;e.g.,&#10;https://asana.com&#10;https://monday.com&#10;https://trello.com"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            ></textarea>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Primary Competitive Concerns
-                            </label>
-                            <textarea 
-                                name="competitive_concerns" 
-                                rows="4"
-                                placeholder="What specific aspects worry you most about your competitors?&#10;&#10;e.g.,&#10;• Their pricing seems more aggressive&#10;• They have stronger brand recognition&#10;• Their feature set is more comprehensive&#10;• Better marketing and user acquisition"
-                                class="input-field w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            ></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Warning Notice -->
-                <div class="warning-box rounded-xl p-4 mb-6 flex items-start">
-                    <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0"></i>
-                    <p class="text-sm text-amber-900 leading-relaxed">
-                        The backend uses API's to access Claude-Sonnet-4.5 by Anthropic and Sonar Deep Research by Perplexity. Click on a "Submit" button triggers a workflow that uses real money paid for AI tokens/credits. <b>Please click responsibly!</b>
-                    </p>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="text-center">
-                    <button 
-                        type="submit" 
-                        id="submitBtn"
-                        class="submit-btn px-8 py-4 text-white text-lg font-semibold rounded-xl inline-flex items-center justify-center min-w-64"
-                    >
-                        <i data-lucide="sparkles" class="w-5 h-5 mr-2"></i>
-                        Generate Analysis
-                    </button>
-                </div>
-            </form>
-
-            <!-- Loading State -->
-            <div id="loadingState" class="hidden text-center py-12">
-                <div class="loading-spinner mx-auto mb-4"></div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Analyzing Competitors...</h3>
-                <p class="text-gray-600">This may take a moment. Please wait.</p>
-            </div>
-
-            <!-- Success Message -->
-            <div id="successMessage" class="hidden text-center py-12">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                    <i data-lucide="check-circle" class="w-8 h-8 text-green-600"></i>
-                </div>
-                <h3 class="text-2xl font-semibold text-gray-800 mb-2">Analysis in Progress!</h3>
-                <p class="text-gray-600 text-lg">You'll receive results shortly.</p>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="text-center text-white">
-            <p class="text-sm opacity-90">
-                © 2025 Content Labs 416. All rights reserved.
-            </p>
-        </footer>
-    </div>
-
 <script>
     // Initialize Lucide icons
     lucide.createIcons();
@@ -450,44 +59,98 @@
         const fullUrl = webhookUrl + '?' + params.toString();
 
         try {
-            // Отправляем запрос и получаем HTML
+            console.log('🚀 Sending request to:', fullUrl);
+            
+            // Отправляем запрос
             const response = await fetch(fullUrl, {
                 method: 'GET',
                 headers: {
-                    'Accept': 'text/html'
+                    'Accept': 'text/html,application/json'
                 }
             });
 
+            console.log('📥 Response status:', response.status);
+            console.log('📄 Content-Type:', response.headers.get('content-type'));
+
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorText = await response.text();
+                console.error('❌ Error response:', errorText);
+                throw new Error(`HTTP ${response.status}: ${errorText.substring(0, 200)}`);
             }
 
-            // Получаем HTML контент
-            const htmlContent = await response.text();
+            // Проверяем тип контента
+            const contentType = response.headers.get('content-type') || '';
+            
+            if (contentType.includes('text/html')) {
+                // Получаем HTML
+                const htmlContent = await response.text();
+                console.log('✅ Received HTML, length:', htmlContent.length);
 
-            // Открываем результат в новой вкладке
-            const newWindow = window.open('', '_blank');
-            newWindow.document.write(htmlContent);
-            newWindow.document.close();
+                // Открываем в новой вкладке
+                const blob = new Blob([htmlContent], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const newWindow = window.open(url, '_blank');
 
-            // Показываем success message
-            setTimeout(() => {
-                loadingState.classList.add('hidden');
-                successMessage.classList.remove('hidden');
-                lucide.createIcons();
+                if (!newWindow) {
+                    alert('⚠️ Popup blocked! Please allow popups for this site and try again.');
+                    throw new Error('Popup blocked');
+                }
 
-                // Сброс формы через 3 секунды
+                // Показываем success message
                 setTimeout(() => {
-                    successMessage.classList.add('hidden');
-                    form.classList.remove('hidden');
-                    form.reset();
+                    loadingState.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
                     lucide.createIcons();
-                }, 3000);
-            }, 500);
+
+                    // Сброс формы через 3 секунды
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                        form.classList.remove('hidden');
+                        form.reset();
+                        lucide.createIcons();
+                        URL.revokeObjectURL(url); // Очистка
+                    }, 3000);
+                }, 500);
+
+            } else if (contentType.includes('application/json')) {
+                // Если вернули JSON (на случай ошибки)
+                const result = await response.json();
+                console.log('📊 JSON response:', result);
+
+                if (result.success && result.view_url) {
+                    // Открыть URL из JSON
+                    window.open(result.view_url, '_blank');
+                    
+                    loadingState.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                        form.classList.remove('hidden');
+                        form.reset();
+                    }, 3000);
+                } else {
+                    throw new Error(result.error || result.message || 'Unknown error');
+                }
+            } else {
+                throw new Error(`Unexpected content type: ${contentType}`);
+            }
 
         } catch (error) {
-            console.error('Error:', error);
-            alert('Failed to generate analysis. Please try again.\n\nError: ' + error.message);
+            console.error('❌ Error:', error);
+            
+            // Показываем более детальную ошибку
+            let errorMessage = 'Failed to generate analysis. Please try again.';
+            
+            if (error.message.includes('Failed to fetch')) {
+                errorMessage = 'Network error. Please check your internet connection.';
+            } else if (error.message.includes('Popup blocked')) {
+                errorMessage = 'Please allow popups for this site and try again.';
+            } else {
+                errorMessage = error.message;
+            }
+            
+            alert('⚠️ Error\n\n' + errorMessage);
             
             // Вернуться к форме
             loadingState.classList.add('hidden');
@@ -502,18 +165,42 @@
         });
     });
 
-    // Character counter for textareas (optional enhancement)
-    document.querySelectorAll('textarea').forEach(textarea => {
-        textarea.addEventListener('input', function() {
-            const maxLength = this.getAttribute('maxlength');
-            if (maxLength) {
-                const remaining = maxLength - this.value.length;
-                console.log(`Characters remaining: ${remaining}`);
-            }
-        });
+    // Auto-save form data to localStorage (optional)
+    const saveFormData = () => {
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            if (value.trim()) data[key] = value.trim();
+        }
+        localStorage.setItem('competitorAnalysisForm', JSON.stringify(data));
+    };
+
+    const loadFormData = () => {
+        const saved = localStorage.getItem('competitorAnalysisForm');
+        if (saved) {
+            const data = JSON.parse(saved);
+            Object.keys(data).forEach(key => {
+                const field = form.querySelector(`[name="${key}"]`);
+                if (field) {
+                    field.value = data[key];
+                    if (field.type === 'radio' && field.value === data[key]) {
+                        field.checked = true;
+                    }
+                }
+            });
+        }
+    };
+
+    // Load saved data on page load
+    loadFormData();
+
+    // Save on input
+    form.addEventListener('input', saveFormData);
+
+    // Clear saved data on successful submit
+    form.addEventListener('submit', () => {
+        setTimeout(() => {
+            localStorage.removeItem('competitorAnalysisForm');
+        }, 4000);
     });
 </script>
-
-
-</body>
-</html>
