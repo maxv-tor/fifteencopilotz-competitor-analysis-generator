@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🔧 CUSTOMIZE: Change title for each tool -->
+    <title>[TOOL NAME] - Content Labs 416</title>
+    
+    <!-- 🔧 CUSTOMIZE: Change description for each tool -->
+    <meta name="description" content="[Tool description for SEO]">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for sidebar */
+        .sidebar-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Loading animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background font-sans antialiased">
+    
+    <!-- ========================================
+         HEADER - Same for all pages
+         ======================================== -->
+    <div class="flex flex-col h-screen">
+        <header class="border-b bg-white h-[60px] w-full flex items-center justify-between px-4 sm:px-6 z-10 shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-8 md:hidden"></div>
+                <a href="index.html" class="text-xl font-semibold hidden sm:inline bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
+                    Content Labs 416
+                </a>
+            </div>
+            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all border bg-white shadow-sm hover:bg-gray-50 size-9">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+            </button>
+        </header>
+
+        <!-- ========================================
+             MAIN CONTENT AREA
+             ======================================== -->
+        <div class="flex flex-1 overflow-hidden relative">
+            
+            <!-- ========================================
+                 SIDEBAR - Same for all pages
+                 🔧 CUSTOMIZE: Add "bg-indigo-50 text-indigo-600" to active link
+                 ======================================== -->
+            <aside class="border-r h-[calc(100vh-60px)] flex-shrink-0 hidden md:block transition-all duration-300 w-72 bg-white shadow-sm">
+                <div class="h-full flex flex-col">
+                    
+                    <!-- Sidebar Header -->
+                    <div class="h-16 flex-shrink-0 border-b px-4 flex items-center gap-2">
+                        <div class="relative flex-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <input type="text" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm pl-8 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="Search tools..."/>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Navigation -->
+                    <div class="flex-1 overflow-y-auto sidebar-scrollbar p-2">
+                        <div class="space-y-1">
+                            
+                            <!-- Agentic Tools Section -->
+                            <div class="px-3 py-2">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                        <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                                        <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                                        <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                                        <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+                                    </svg>
+                                    <span class="font-semibold text-sm">Agentic Tools</span>
+                                </div>
+                                <div class="space-y-1 ml-6">
+                                    <!-- 🔧 CUSTOMIZE: Add class "bg-indigo-50 text-indigo-600 font-medium" to active page -->
+                                    <a href="competitor-products-brief.html" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Competitor Products Brief
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Market Insight Briefs
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Client Intake to Brief
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Content Creation Copilots Section -->
+                            <div class="px-3 py-2">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                        <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
+                                    </svg>
+                                    <span class="font-semibold text-sm">Content Creation Copilots</span>
+                                </div>
+                                <div class="space-y-1 ml-6">
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Lead Nurture Email
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Re-engagement Email
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Sales Email
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Facebook Ads
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Instagram Ads
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Google Ads
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        LinkedIn Ads
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        TikTok Ads
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        YouTube Ads
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Lead Capture Page
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Webinar Signup Page
+                                    </a>
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Advertorial Page
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Resources Section -->
+                            <div class="px-3 py-2">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                                        <path d="m9 12 2 2 4-4"></path>
+                                    </svg>
+                                    <span class="font-semibold text-sm">Resources</span>
+                                </div>
+                                <div class="space-y-1 ml-6">
+                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
+                                        Support
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Footer -->
+                    <div class="h-14 flex-shrink-0 border-t p-3">
+                        <a href="#" class="flex items-center rounded-md px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <span>Settings</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ========================================
+                 MAIN CONTENT
+                 🔧 CUSTOMIZE: Replace this entire section with your tool's form/content
+                 ======================================== -->
+            <main class="flex-1 overflow-auto bg-gray-50">
+                <div class="flex flex-col items-center min-h-auto p-4 sm:p-6">
+                    <div class="max-w-4xl w-full">
+                        
+                        <!-- 🔧 CUSTOMIZE: Page Header -->
+                        <div class="text-center mb-8 animate-fade-in">
+                            <h1 class="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
+                                [Your Tool Name Here]
+                            </h1>
+                            <p class="text-sm sm:text-base mb-6 max-w-2xl mx-auto text-gray-600">
+                                [Your tool description goes here - explain what it does and the value it provides]
+                            </p>
+                        </div>
+
+                        <!-- 🔧 CUSTOMIZE: Main Content Card -->
+                        <div class="bg-white rounded-xl border shadow-sm p-6 mb-6">
+                            
+                            <!-- 
+                            ================================================
+                            🎯 YOUR FORM/CONTENT GOES HERE
+                            ================================================
+                            
+                            Replace this entire section with:
+                            - Your input form
+                            - Your tool interface
+                            - Your content generator
+                            - Whatever your specific tool needs
+                            
+                            Example structure below (delete and replace):
+                            ================================================
+                            -->
+                            
+                            <form id="toolForm" class="space-y-6">
+                                
+                                <!-- Example Section -->
+                                <div>
+                                    <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                                        </svg>
+                                        Basic Information
+                                    </h2>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <!-- Example Input Field -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">
+                                                Field Name <span class="text-red-500">*</span>
+                                            </label>
+                                            <input 
+                                                type="text" 
+                                                id="example_field" 
+                                                required 
+                                                class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" 
+                                                placeholder="e.g., Example input"
+                                            />
+                                        </div>
+                                        
+                                        <!-- Example Textarea -->
+                                        <div class="md:col-span-2">
+                                            <label class="block text-sm font-medium mb-2">
+                                                Description
+                                            </label>
+                                            <textarea 
+                                                id="example_textarea" 
+                                                rows="4" 
+                                                class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" 
+                                                placeholder="Enter your description here..."
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Info Note (optional) -->
+                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                    <p class="text-sm text-indigo-800">
+                                        <strong>Note:</strong> Add any important information or disclaimers here.
+                                    </p>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button 
+                                    type="submit" 
+                                    id="submitBtn" 
+                                    class="w-full inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 text-white shadow-lg hover:shadow-xl h-10 px-6"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+                                    </svg>
+                                    Generate [Tool Output]
+                                </button>
+                                
+                            </form>
+                            
+                            <!-- 
+                            ================================================
+                            END OF CUSTOMIZABLE CONTENT AREA
+                            ================================================
+                            -->
+                        </div>
+
+                        <!-- 🔧 OPTIONAL: Loading Status (copy from competitor-products-brief.html if needed) -->
+                        <div id="loadingStatus" class="bg-white rounded-xl border shadow-sm p-6 hidden">
+                            <div class="text-center space-y-4">
+                                <div class="flex justify-center">
+                                    <svg class="animate-spin h-12 w-12 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-semibold">Processing...</h3>
+                                <p id="statusText" class="text-gray-600">Generating your content...</p>
+                                <p class="text-sm text-gray-500">This may take a few moments. Please wait.</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                                    <div id="progressBar" class="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- ========================================
+         FOOTER - Same for all pages
+         ======================================== -->
+    <footer class="w-full border-t bg-white text-gray-600 text-sm">
+        <div class="max-w-6xl mx-auto w-full px-4 py-6 text-center">
+            <p>© 2025 Content Labs 416</p>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT
+         🔧 CUSTOMIZE: Replace with your tool's specific logic
+         ======================================== -->
+    <script>
+        // 🔧 CUSTOMIZE: Change API endpoint for your specific tool
+        const API_ENDPOINT = 'https://contentlabs.app.n8n.cloud/webhook/YOUR-TOOL-WEBHOOK-NAME';
+
+        document.getElementById('toolForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // 🔧 CUSTOMIZE: Collect your form data
+            const formData = {
+                example_field: document.getElementById('example_field').value,
+                example_textarea: document.getElementById('example_textarea').value,
+                // Add all your form fields here
+            };
+
+            // Show loading status
+            document.getElementById('toolForm').classList.add('hidden');
+            document.getElementById('loadingStatus').classList.remove('hidden');
+
+            // Simulate progress (optional)
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 90) progress = 90;
+                document.getElementById('progressBar').style.width = progress + '%';
+            }, 1000);
+
+            try {
+                // 🔧 CUSTOMIZE: Your API call
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                clearInterval(progressInterval);
+                document.getElementById('progressBar').style.width = '100%';
+
+                if (response.ok) {
+                    const result = await response.text();
+                    document.getElementById('statusText').textContent = 'Complete! Opening results...';
+                    
+                    setTimeout(() => {
+                        // 🔧 CUSTOMIZE: Handle your response
+                        // Option 1: Open in new window (like competitor-products-brief)
+                        const newWindow = window.open();
+                        newWindow.document.write(result);
+                        newWindow.document.close();
+                        
+                        // Option 2: Display on same page
+                        // document.getElementById('results').innerHTML = result;
+                        
+                        // Reset form
+                        document.getElementById('toolForm').classList.remove('hidden');
+                        document.getElementById('loadingStatus').classList.add('hidden');
+                        document.getElementById('toolForm').reset();
+                        document.getElementById('progressBar').style.width = '0%';
+                    }, 1000);
+                } else {
+                    throw new Error('Request failed');
+                }
+            } catch (error) {
+                clearInterval(progressInterval);
+                document.getElementById('statusText').textContent = 'Error: ' + error.message;
+                document.getElementById('statusText').classList.add('text-red-500');
+                
+                setTimeout(() => {
+                    document.getElementById('toolForm').classList.remove('hidden');
+                    document.getElementById('loadingStatus').classList.add('hidden');
+                    document.getElementById('progressBar').style.width = '0%';
+                }, 3000);
+            }
+        });
+    </script>
+
+</body>
+</html>
