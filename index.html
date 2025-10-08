@@ -3,33 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competitor Analysis Generator - by Content Labs 416</title>
+    <title>Content Labs 416 - AI-Powered Marketing Automation</title>
+    <meta name="description" content="Transform your marketing with AI-powered automation tools. Competitor analysis, email copilots, ad creation, and landing page generators - all in one platform.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for sidebar */
-        .sidebar-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .sidebar-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .sidebar-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
-        .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* Loading animation */
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .animate-spin {
-            animation: spin 1s linear infinite;
-        }
-
-        /* Fade in animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -39,397 +16,431 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-background font-sans antialiased">
+<body class="min-h-screen bg-gray-50 font-sans antialiased">
     
-    <!-- Main Container -->
-    <div class="flex flex-col h-screen">
-        
-        <!-- Header -->
-        <header class="border-b bg-white h-[60px] w-full flex items-center justify-between px-4 sm:px-6 z-10 shadow-sm">
-            <div class="flex items-center gap-2">
-                <div class="w-8 md:hidden"></div>
-                <span class="text-xl font-semibold hidden sm:inline bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">Content Labs 416</span>
-            </div>
-            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all border bg-white shadow-sm hover:bg-gray-50 size-9">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <path d="M12 2v2"></path>
-                    <path d="M12 20v2"></path>
-                    <path d="m4.93 4.93 1.41 1.41"></path>
-                    <path d="m17.66 17.66 1.41 1.41"></path>
-                    <path d="M2 12h2"></path>
-                    <path d="M20 12h2"></path>
-                    <path d="m6.34 17.66-1.41 1.41"></path>
-                    <path d="m19.07 4.93-1.41 1.41"></path>
-                </svg>
-            </button>
-        </header>
+    <!-- Header -->
+    <header class="border-b bg-white h-[60px] w-full flex items-center justify-between px-4 sm:px-6 z-10 shadow-sm sticky top-0">
+        <div class="flex items-center gap-2">
+            <span class="text-xl font-semibold bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">Content Labs 416</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="#pricing" class="hidden sm:inline-flex text-sm text-gray-600 hover:text-gray-900">Pricing</a>
+            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 text-white h-9 px-4">
+                Get Started
+            </a>
+        </div>
+    </header>
 
-        <!-- Main Content Area -->
-        <div class="flex flex-1 overflow-hidden relative">
-            
-            <!-- Sidebar -->
-            <aside class="border-r h-[calc(100vh-60px)] flex-shrink-0 hidden md:block transition-all duration-300 w-72 bg-white shadow-sm">
-                <div class="h-full flex flex-col">
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+        <div class="flex flex-col items-center min-h-auto p-4 sm:p-6">
+            <div class="max-w-6xl w-full">
+                
+                <!-- Hero Section -->
+                <div class="text-center mb-8 animate-fade-in">
+                    <h1 class="text-3xl sm:text-5xl font-bold mb-3 bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
+                        Content Labs 416
+                    </h1>
+                    <h2 class="text-lg sm:text-2xl font-medium mb-4 text-gray-700">
+                        🚀 Your Ultimate AI Marketing Automation Hub
+                    </h2>
+                    <p class="text-sm sm:text-base mb-6 max-w-2xl mx-auto text-gray-600">
+                        Supercharge your marketing with AI-powered agents and copilots. From competitor research to ad creation - we automate the heavy lifting so you can focus on strategy.
+                    </p>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="mb-6 space-y-3">
+                    <div class="relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="searchInput"
+                            class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm pl-10 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" 
+                            placeholder="Search tools..."
+                        />
+                    </div>
                     
-                    <!-- Sidebar Header -->
-                    <div class="h-16 flex-shrink-0 border-b px-4 flex items-center gap-2">
-                        <div class="relative flex-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.35-4.35"></path>
-                            </svg>
-                            <input type="text" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm pl-8 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="Search tools..."/>
-                        </div>
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterTools('all')" class="category-btn inline-flex items-center justify-center whitespace-nowrap font-medium transition-all bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 text-white h-8 rounded-md gap-1.5 px-3 text-xs sm:text-sm">
+                            All
+                        </button>
+                        <button onclick="filterTools('agentic')" class="category-btn inline-flex items-center justify-center whitespace-nowrap font-medium transition-all border bg-white shadow-sm hover:bg-gray-50 h-8 rounded-md gap-1.5 px-3 text-xs sm:text-sm">
+                            Agentic Tools
+                        </button>
+                        <button onclick="filterTools('content')" class="category-btn inline-flex items-center justify-center whitespace-nowrap font-medium transition-all border bg-white shadow-sm hover:bg-gray-50 h-8 rounded-md gap-1.5 px-3 text-xs sm:text-sm">
+                            Content Copilots
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Sidebar Navigation -->
-                    <div class="flex-1 overflow-y-auto sidebar-scrollbar p-2">
-                        <div class="space-y-1">
-                            
-                            <!-- Agentic Tools Section -->
-                            <div class="px-3 py-2">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
-                                        <rect width="7" height="9" x="3" y="3" rx="1"></rect>
-                                        <rect width="7" height="5" x="14" y="3" rx="1"></rect>
-                                        <rect width="7" height="9" x="14" y="12" rx="1"></rect>
-                                        <rect width="7" height="5" x="3" y="16" rx="1"></rect>
-                                    </svg>
-                                    <span class="font-semibold text-sm">Agentic Tools</span>
-                                </div>
-                                <div class="space-y-1 ml-6">
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md bg-indigo-50 text-indigo-600 font-medium">
-                                        Competitor Products Brief
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Market Insight Briefs
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Client Intake to Brief
-                                    </a>
-                                </div>
+                <!-- Tools Grid -->
+                <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-8">
+                    
+                    <!-- Agentic Tools -->
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer" data-category="agentic" data-name="competitor products brief">
+                        <a href="competitor-products-brief.html" class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
                             </div>
-
-                            <!-- Content Creation Copilots Section -->
-                            <div class="px-3 py-2">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
-                                        <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                        <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
-                                    </svg>
-                                    <span class="font-semibold text-sm">Content Creation Copilots</span>
-                                </div>
-                                <div class="space-y-1 ml-6">
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Lead Nurture Email
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Re-engagement Email
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Sales Email
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Facebook Ads
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Instagram Ads
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Google Ads
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        LinkedIn Ads
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        TikTok Ads
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        YouTube Ads
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Lead Capture Page
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Webinar Signup Page
-                                    </a>
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Advertorial Page
-                                    </a>
-                                </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                Competitor Products Brief
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                AI-powered deep dive into your competitive landscape. Get positioning, pricing, and opportunity insights.
+                            </p>
+                            <div class="flex items-center text-indigo-600 text-sm font-medium">
+                                Try now
+                                <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
                             </div>
-
-                            <!-- Resources Section -->
-                            <div class="px-3 py-2">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
-                                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
-                                        <path d="m9 12 2 2 4-4"></path>
-                                    </svg>
-                                    <span class="font-semibold text-sm">Resources</span>
-                                </div>
-                                <div class="space-y-1 ml-6">
-                                    <a href="#" class="block px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50">
-                                        Support
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Footer -->
-                    <div class="h-14 flex-shrink-0 border-t p-3">
-                        <a href="#" class="flex items-center rounded-md px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                            <span>Settings</span>
                         </a>
                     </div>
-                </div>
-            </aside>
 
-            <!-- Main Content -->
-            <main class="flex-1 overflow-auto bg-gray-50">
-                <div class="flex flex-col items-center min-h-auto p-4 sm:p-6">
-                    <div class="max-w-4xl w-full">
-                        
-                        <!-- Page Header -->
-                        <div class="text-center mb-8 animate-fade-in">
-                            <h1 class="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
-                                Instantly Know Exactly How You Stack Up Against Every Competitor
-                            </h1>
-                            <p class="text-sm sm:text-base mb-6 max-w-2xl mx-auto text-gray-600">
-                                AI‑powered automation turns your basic input into a fully‑fledged competitor analysis -- revealing rivals' positioning, pricing moves, and hidden opportunities -- all distilled into insights you can act on today.
-                            </p>
-                        </div>
-
-                        <!-- Analysis Form Card -->
-                        <div class="bg-white rounded-xl border shadow-sm p-6 mb-6">
-                            <form id="analysisForm" class="space-y-6">
-                                
-                                <!-- Company & Product Information Section -->
-                                <div>
-                                    <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
-                                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path>
-                                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
-                                            <path d="M12 3v6"></path>
-                                        </svg>
-                                        Company & Product Information
-                                    </h2>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Company Name <span class="text-red-500">*</span></label>
-                                            <input type="text" id="company_name" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., Content Labs 416"/>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Product Name <span class="text-red-500">*</span></label>
-                                            <input type="text" id="product_name" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., ProjectGM X-1"/>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Product Category <span class="text-red-500">*</span></label>
-                                            <input type="text" id="product_category" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., E-commerce"/>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Product Subcategory</label>
-                                            <input type="text" id="product_subcategory" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., Gaming Mouse"/>
-                                        </div>
-                                        <div class="md:col-span-2">
-                                            <label class="block text-sm font-medium mb-2">Your Email Address <span class="text-red-500">*</span></label>
-                                            <input type="email" id="email_address" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="you@example.com"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Product Details Section -->
-                                <div>
-                                    <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
-                                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                                        </svg>
-                                        Product Details
-                                    </h2>
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Key Product Features <span class="text-red-500">*</span></label>
-                                            <textarea id="key_features" required rows="4" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="List your main product features, specifications, and unique selling points..."></textarea>
-                                        </div>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div>
-                                                <label class="block text-sm font-medium mb-2">Price Point</label>
-                                                <input type="text" id="price_point" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., $89.95"/>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm font-medium mb-2">Research Depth</label>
-                                                <select id="research_depth" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
-                                                    <option value="Basic">Basic (3-5)</option>
-                                                    <option value="Comprehensive">Deep (6-10)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Target Market</label>
-                                            <textarea id="target_market" rows="3" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="Describe your target audience, demographics, and market segment..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Competitor Information Section -->
-                                <div>
-                                    <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="9" cy="7" r="4"></circle>
-                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                        </svg>
-                                        Competitor Information
-                                    </h2>
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Known Competitors</label>
-                                            <textarea id="known_competitors" rows="3" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="List competitors you already know about (optional)..."></textarea>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Competitor URLs</label>
-                                            <textarea id="competitor_urls" rows="2" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="Enter competitor website URLs (one per line, optional)..."></textarea>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium mb-2">Competitive Concerns</label>
-                                            <textarea id="competitive_concerns" rows="3" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="What are your main competitive concerns or questions?"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Info Note -->
-                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-                                    <p class="text-sm text-indigo-800">
-                                        <strong>Note:</strong> This uses Claude 4.5 Sonnet + Perplexity Sonar Pro. Costs real money per request.
-                                    </p>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <button type="submit" id="submitBtn" class="w-full inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 text-white shadow-lg hover:shadow-xl h-10 px-6">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
-                                    </svg>
-                                    Generate Analysis
-                                </button>
-                            </form>
-                        </div>
-
-                        <!-- Loading Status (Hidden by default) -->
-                        <div id="loadingStatus" class="bg-white rounded-xl border shadow-sm p-6 hidden">
-                            <div class="text-center space-y-4">
-                                <div class="flex justify-center">
-                                    <svg class="animate-spin h-12 w-12 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-semibold">Starting Analysis...</h3>
-                                <p id="statusText" class="text-gray-600">Initializing workflow...</p>
-                                <p class="text-sm text-gray-500">This may take 2-5 minutes. Please keep this tab open.</p>
-                                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                                    <div id="progressBar" class="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
-                                </div>
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="agentic" data-name="market insight briefs">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                    <path d="M3 3v18h18"></path>
+                                    <path d="m19 9-5 5-4-4-3 3"></path>
+                                </svg>
                             </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Market Insight Briefs
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Comprehensive market analysis with trends, opportunities, and data-driven recommendations.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
                         </div>
-
                     </div>
-                </div>
-            </main>
 
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="agentic" data-name="client intake to brief">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500">
+                                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Client Intake to Brief
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Transform client conversations into structured creative briefs automatically.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <!-- Content Creation Copilots -->
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="lead nurture email">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-500">
+                                    <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Lead Nurture Email
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Generate personalized email sequences that build relationships and drive conversions.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="re-engagement email">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-500">
+                                    <path d="m22 2-7 20-4-9-9-4Z"></path>
+                                    <path d="M22 2 11 13"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Re-engagement Email
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Win back dormant leads with compelling re-engagement campaigns.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="sales email">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-500">
+                                    <path d="M21.5 2v6h-6"></path>
+                                    <path d="M21.34 15.57a10 10 0 1 1-.57-8.38"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Sales Email
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Craft high-converting sales emails that close deals faster.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="facebook ads">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-fuchsia-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-fuchsia-500">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Facebook Ads
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Create scroll-stopping Facebook ad copy and creative concepts.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="instagram ads">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-fuchsia-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-fuchsia-500">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Instagram Ads
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Generate Instagram ads that drive engagement and conversions.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="google ads">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-fuchsia-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-fuchsia-500">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                                    <path d="M2 12h20"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Google Ads
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Build high-performing Google Ads campaigns with AI-optimized copy.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="linkedin ads">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-fuchsia-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-fuchsia-500">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect width="4" height="12" x="2" y="9"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                LinkedIn Ads
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Professional B2B ad copy that resonates with decision-makers.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="tiktok ads">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-fuchsia-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-fuchsia-500">
+                                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                TikTok Ads
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Viral-worthy TikTok ad scripts that capture attention in seconds.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="youtube ads">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-fuchsia-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-fuchsia-500">
+                                    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                                    <path d="m10 15 5-3-5-3z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                YouTube Ads
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Engaging YouTube ad scripts that keep viewers watching.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="lead capture page">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500">
+                                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                                    <path d="M7 7h10"></path>
+                                    <path d="M7 12h10"></path>
+                                    <path d="M7 17h6"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Lead Capture Page
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                High-converting landing pages that turn visitors into leads.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="webinar signup page">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500">
+                                    <path d="m18 16 4-4-4-4"></path>
+                                    <path d="m6 8-4 4 4 4"></path>
+                                    <path d="m14.5 4-5 16"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Webinar Signup Page
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Persuasive webinar pages that maximize registrations.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card bg-white rounded-xl border shadow-sm p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer opacity-50" data-category="content" data-name="advertorial page">
+                        <div class="space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-semibold text-gray-900">
+                                Advertorial Page
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                Native advertising content that educates and sells seamlessly.
+                            </p>
+                            <div class="text-xs text-gray-500">Coming Soon</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="w-full border-t bg-white text-gray-600 text-sm">
-        <div class="max-w-6xl mx-auto w-full px-4 py-6 text-center">
-            <p>© 2025 Content Labs 416</p>
+    <footer class="w-full border-t bg-white text-gray-600 text-sm mt-8">
+        <div class="max-w-6xl mx-auto w-full px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+            <div class="md:col-span-2">
+                <span class="font-mono text-lg text-gray-900 bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">Content Labs 416</span>
+                <p class="text-sm text-gray-600 mt-2">AI-powered marketing automation that works while you sleep.</p>
+            </div>
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-3">Tools</h3>
+                <ul class="space-y-2">
+                    <li><a href="competitor-products-brief.html" class="hover:text-gray-900">Competitor Analysis</a></li>
+                    <li><a href="#" class="hover:text-gray-900">Email Copilots</a></li>
+                    <li><a href="#" class="hover:text-gray-900">Ad Generators</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-3">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-900">Support</a></li>
+                    <li><a href="#" class="hover:text-gray-900">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-gray-900">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto w-full px-4 pb-4 border-t pt-4 text-center">
+            <p>© 2025 Content Labs 416. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Your original JavaScript - UNCHANGED -->
+    <!-- JavaScript for Search & Filter -->
     <script>
-        const API_ENDPOINT = 'https://contentlabs.app.n8n.cloud/webhook/competitor-products-brief';
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const toolCards = document.querySelectorAll('.tool-card');
 
-        document.getElementById('analysisForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const formData = {
-                company_name: document.getElementById('company_name').value,
-                product_name: document.getElementById('product_name').value,
-                product_category: document.getElementById('product_category').value,
-                product_subcategory: document.getElementById('product_subcategory').value,
-                email_address: document.getElementById('email_address').value,
-                key_features: document.getElementById('key_features').value,
-                price_point: document.getElementById('price_point').value,
-                research_depth: document.getElementById('research_depth').value,
-                target_market: document.getElementById('target_market').value,
-                known_competitors: document.getElementById('known_competitors').value,
-                competitor_urls: document.getElementById('competitor_urls').value,
-                competitive_concerns: document.getElementById('competitive_concerns').value
-            };
-
-            // Show loading status
-            document.getElementById('analysisForm').classList.add('hidden');
-            document.getElementById('loadingStatus').classList.remove('hidden');
-
-            // Simulate progress
-            let progress = 0;
-            const progressInterval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress > 90) progress = 90;
-                document.getElementById('progressBar').style.width = progress + '%';
-            }, 1000);
-
-            try {
-                const response = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                clearInterval(progressInterval);
-                document.getElementById('progressBar').style.width = '100%';
-
-                if (response.ok) {
-                    const result = await response.text();
-                    document.getElementById('statusText').textContent = 'Analysis complete! Opening results...';
-                    
-                    setTimeout(() => {
-                        const newWindow = window.open();
-                        newWindow.document.write(result);
-                        newWindow.document.close();
-                        
-                        // Reset form
-                        document.getElementById('analysisForm').classList.remove('hidden');
-                        document.getElementById('loadingStatus').classList.add('hidden');
-                        document.getElementById('analysisForm').reset();
-                        document.getElementById('progressBar').style.width = '0%';
-                    }, 1000);
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            toolCards.forEach(card => {
+                const toolName = card.dataset.name;
+                if (toolName.includes(searchTerm)) {
+                    card.style.display = 'block';
                 } else {
-                    throw new Error('Analysis failed');
+                    card.style.display = 'none';
                 }
-            } catch (error) {
-                clearInterval(progressInterval);
-                document.getElementById('statusText').textContent = 'Error: ' + error.message;
-                document.getElementById('statusText').classList.add('text-red-500');
-                
-                setTimeout(() => {
-                    document.getElementById('analysisForm').classList.remove('hidden');
-                    document.getElementById('loadingStatus').classList.add('hidden');
-                    document.getElementById('progressBar').style.width = '0%';
-                }, 3000);
-            }
+            });
         });
+
+        // Filter functionality
+        function filterTools(category) {
+            // Update button styles
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-pink-500', 'via-fuchsia-500', 'to-indigo-500', 'text-white');
+                btn.classList.add('border', 'bg-white', 'shadow-sm', 'hover:bg-gray-50');
+            });
+            
+            event.target.classList.remove('border', 'bg-white', 'shadow-sm', 'hover:bg-gray-50');
+            event.target.classList.add('bg-gradient-to-r', 'from-pink-500', 'via-fuchsia-500', 'to-indigo-500', 'text-white');
+
+            // Filter cards
+            toolCards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const cardCategory = card.dataset.category;
+                    if (cardCategory === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
     </script>
 
 </body>
