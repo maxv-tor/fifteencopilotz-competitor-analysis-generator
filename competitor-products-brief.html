@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competitor Analysis Generator - by Content Labs 416</title>
+    <title>Competitor Products Brief Generator - by Content Labs 416</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom scrollbar for sidebar */
@@ -199,7 +199,7 @@
                         <!-- Page Header -->
                         <div class="text-center mb-8 animate-fade-in">
                             <h1 class="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-pink-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
-                                Instantly Know Exactly How You Stack Up Against Every Competitor
+                                Instantly Know Exactly How You Stack Up Against Top Competitors
                             </h1>
                             <p class="text-sm sm:text-base mb-6 max-w-2xl mx-auto text-gray-600">
                                 AI‑powered automation turns your basic input into a fully‑fledged competitor analysis -- revealing rivals' positioning, pricing moves, and hidden opportunities -- all distilled into insights you can act on today.
@@ -218,23 +218,23 @@
                                             <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
                                             <path d="M12 3v6"></path>
                                         </svg>
-                                        Company & Product Information
+                                        Your Company & Product Information
                                     </h2>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
-                                            <label class="block text-sm font-medium mb-2">Company Name <span class="text-red-500">*</span></label>
+                                            <label class="block text-sm font-medium mb-2">Your Company Name <span class="text-red-500">*</span></label>
                                             <input type="text" id="company_name" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., Acme Corporation"/>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-2">Product Name <span class="text-red-500">*</span></label>
+                                            <label class="block text-sm font-medium mb-2">Your Product Name <span class="text-red-500">*</span></label>
                                             <input type="text" id="product_name" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., TaskMaster Pro"/>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-2">Product Category <span class="text-red-500">*</span></label>
+                                            <label class="block text-sm font-medium mb-2">Your Product Category <span class="text-red-500">*</span></label>
                                             <input type="text" id="product_category" required class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., Productivity Software"/>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-2">Product Subcategory</label>
+                                            <label class="block text-sm font-medium mb-2">Your Product Subcategory</label>
                                             <input type="text" id="product_subcategory" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., Project Management, CRM..."/>
                                         </div>
                                         <div class="md:col-span-2">
@@ -251,7 +251,7 @@
                                             <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
                                             <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
                                         </svg>
-                                        Product Details
+                                        Your Product Details
                                     </h2>
                                     <div class="space-y-4">
                                         <div>
@@ -267,7 +267,7 @@
                                                 <label class="block text-sm font-medium mb-2">Research Depth</label>
                                                 <select id="research_depth" class="flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
                                                     <option value="Basic">Basic (3-5)</option>
-                                                    <option value="Comprehensive">Deep (6-10)</option>
+                                                    <option value="Comprehensive" selected>Deep (6-10)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -291,11 +291,11 @@
                                     </h2>
                                     <div class="space-y-4">
                                         <div>
-                                            <label class="block text-sm font-medium mb-2">Known Competitors</label>
+                                            <label class="block text-sm font-medium mb-2">List your known competitors (be specific. While Logitec or Nvidia <b>are</b> competitors, but smaller merchants may be winning through paid platforms)</label>
                                             <textarea id="known_competitors" rows="3" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., Asana, Monday.com"></textarea>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium mb-2">Competitor URLs</label>
+                                            <label class="block text-sm font-medium mb-2">Competitor URLs (comma separated)</label>
                                             <textarea id="competitor_urls" rows="2" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" placeholder="e.g., https://asana.com, https://monday.com"></textarea>
                                         </div>
                                         <div>
